@@ -1,0 +1,40 @@
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f8f9fa;
+}
+header {
+  background-color: #007bff;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+.urdu {
+  font-family: 'Noto Nastaliq Urdu', serif;
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+.search-section {
+  padding: 1rem;
+  text-align: center;
+}
+input[type="text"] {
+  width: 80%;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+.results {
+  padding: 1rem;
+}
+.bus-card {
+  background-color: white;
+  border: 1px solid #ccc;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
