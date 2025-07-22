@@ -1,35 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Signup - GBS</title>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-  <script src="firebase.js"></script>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h2>Signup</h2>
   <form id="signupForm">
-    <input type="email" id="email" placeholder="Email" required><br>
-    <input type="password" id="password" placeholder="Password" required><br>
-    <button type="submit">Sign Up</button>
+    <h2>Signup</h2>
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="password" id="password" placeholder="Password" required />
+    <select id="role">
+      <option value="user">User</option>
+      <option value="admin">Admin</option>
+      <option value="superadmin">Super Admin</option>
+    </select>
+    <button type="submit">Signup</button>
+    <p>Already have an account? <a href="login.html">Login</a></p>
   </form>
-  <p id="message"></p>
-
-  <script>
-    document.getElementById("signupForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-
-      firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then(() => {
-          document.getElementById("message").innerText = "Signup successful!";
-        })
-        .catch((error) => {
-          document.getElementById("message").innerText = error.message;
-        });
-    });
-  </script>
+  <script type="module" src="auth.js"></script>
 </body>
 </html>

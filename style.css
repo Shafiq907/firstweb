@@ -1,115 +1,46 @@
-
 body {
-  font-family: sans-serif;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f2f2f2;
   margin: 0;
   padding: 0;
-  background: #f8f9fa;
 }
-
 header {
-  background-color: #007bff;
+  background: #004080;
   color: white;
-  padding: 1rem;
+  padding: 20px;
   text-align: center;
+  position: relative;
 }
-
-.urdu {
-  font-family: 'Noto Nastaliq Urdu', serif;
-  display: inline-block;
-  margin-right: 0.5rem;
-}
-
-nav {
-  margin-top: 10px;
-}
-
-nav a {
-  margin: 0 10px;
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.search-section {
-  padding: 1rem;
-  text-align: center;
-}
-
-input[type="text"] {
-  width: 80%;
-  padding: 0.5rem;
-  font-size: 1rem;
-}
-
-.results {
-  padding: 1rem;
-}
-
-.bus-card {
-  background-color: white;
-  border: 1px solid #ccc;
-  margin: 1rem auto;
-  padding: 1rem;
-  border-radius: 8px;
-  width: 90%;
-  max-width: 600px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.login-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: #f1f1f1;
-}
-
-.login-box {
-  background: white;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  width: 100%;
-  max-width: 400px;
-}
-
-.login-box h2 {
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.form-group {
-  margin-bottom: 1rem;
-}
-
-label {
-  display: block;
-  margin-bottom: 0.3rem;
-  font-weight: bold;
-}
-
-input[type="text"],
-input[type="password"] {
-  width: 100%;
-  padding: 0.6rem;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-}
-
-button {
-  width: 100%;
-  padding: 0.7rem;
-  background-color: #007bff;
-  color: white;
+nav a, button {
+  margin: 5px;
+  padding: 8px 12px;
+  background: #fff;
   border: none;
-  font-size: 1rem;
-  border-radius: 5px;
+  color: #004080;
+  border-radius: 4px;
+  text-decoration: none;
   cursor: pointer;
 }
-
-.error-text {
-  color: red;
-  text-align: center;
-  margin-top: 10px;
+input, select {
+  width: 90%;
+  max-width: 400px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+form {
+  margin: 30px auto;
+  max-width: 400px;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #ccc;
+}
+.bus-card {
+  background: white;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: 0 0 5px #999;
 }
