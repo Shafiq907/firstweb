@@ -1,26 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Admin Dashboard</title>
-  <link rel="stylesheet" href="style.css" />
-  <script type="module" src="auth.js"></script>
+  <title>Admin Panel - Add Bus Info</title>
 </head>
 <body>
-  <header>
-    <h1>Admin Panel</h1>
-    <button onclick="logout()">Logout</button>
-  </header>
-  <main>
-    <form id="busForm">
-      <h3>Add Bus Info</h3>
-      <input type="text" id="city" placeholder="City" required />
-      <input type="text" id="company" placeholder="Company" required />
-      <input type="text" id="time" placeholder="Time" required />
-      <input type="text" id="fare" placeholder="Fare" required />
-      <input type="text" id="location" placeholder="Terminal" required />
-      <button type="submit">Add</button>
-    </form>
-  </main>
+  <h2>Admin Panel</h2>
+  <input type="text" id="city" placeholder="City" />
+  <input type="text" id="company" placeholder="Company" />
+  <input type="text" id="time" placeholder="Time" />
+  <input type="text" id="fare" placeholder="Fare" />
+  <input type="text" id="location" placeholder="Location" />
+  <button onclick="addBus()">Add Bus</button>
+  <br><br>
+  <button onclick="logout()">Logout</button>
+
+  <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyB2tkaajsK2d0eY6lXztK5nMpI8gVY3Vbg",
+      authDomain: "gibs-login-system.firebaseapp.com",
+      projectId: "gibs-login-system",
+      storageBucket: "gibs-login-system.appspot.com",
+      messagingSenderId: "1065767063573",
+      appId: "1:1065767063573:web:42a7373ae0e7fff770fe1c",
+      databaseURL: "https://gibs-login-system-default-rtdb.firebaseio.com"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    function addBus() {
+      const city = document.getElementById('city').value;
+      const data = {
+        company: document.getElementById('company').value,
+        time: document.getElementById('time').value,
+        fare: document.getElementById('fare').value,
+        location: document.getElementById('location').value
+      };
+      firebase.database().ref('buses/' + city).push(data).then(() => {
+        alert('Bus added successfully!');
+      });
+    }
+
+    function logout() {
+      firebase.auth().signOut().then(() => {
+        window.location.href = "login.html";
+      });
+    }
+  </script>
 </body>
 </html>
