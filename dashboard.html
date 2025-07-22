@@ -1,23 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Dashboard - GBS</title>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-  <script src="firebase.js"></script>
+  <title>User Dashboard</title>
 </head>
 <body>
-  <h2>Welcome to the Dashboard!</h2>
-  <p>You are logged in.</p>
+  <h2>Welcome User</h2>
+  <input type="text" id="searchCity" placeholder="Enter City" />
+  <button onclick="getBusInfo()">Search</button>
+
+  <div id="results"></div>
+  <br><br>
   <button onclick="logout()">Logout</button>
 
+  <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js"></script>
   <script>
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (!user) {
-        window.location.href = "login.html";
-      }
-    });
+    const firebaseConfig = {
+      apiKey: "AIzaSyB2tkaajsK2d0eY6lXztK5nMpI8gVY3Vbg",
+      authDomain: "gibs-login-system.firebaseapp.com",
+      projectId: "gibs-login-system",
+      storageBucket: "gibs-login-system.appspot.com",
+      messagingSenderId: "1065767063573",
+      appId: "1:1065767063573:web:42a7373ae0e7fff770fe1c",
+      databaseURL: "https://gibs-login-system-default-rtdb.firebaseio.com"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    function getBusInfo() {
+      const city = document.getElementById("searchCity").value.trim();
+      const results = document.getElementById("results");
+      results.innerHTML = "";
+
+      firebase.database().ref("buses/" + city).once("value", snapshot => {
+        if (snapshot.exists()) {
+          snapshot.forEach(child => {
+            const data = child.val();
+            results.innerHTML += `<p><b>${data.company}</b> - ${data.time}, ${data.fare}, ${data.location}</p>`;
+          });
+        } else {
+          results.innerHTML = "No data found.";
+        }
+      });
+    }
 
     function logout() {
       firebase.auth().signOut().then(() => {
