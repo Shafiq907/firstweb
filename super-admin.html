@@ -1,16 +1,22 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Super Admin Dashboard</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
+<html lang="en"><head><meta charset="UTF-8"><title>Super Admin</title></head>
 <body>
   <h1>Welcome Super Admin</h1>
-  <p>You have full control.</p>
   <button onclick="logout()">Logout</button>
-
-  <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js"></script>
-  <script src="auth.js"></script>
-</body>
-</html>
+  <script src="https://www.gstatic.com/firebasejs/12.0.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.0.0/firebase-auth-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBBAojU0U4T6Mxiju-IGRjePkZlynIu_Nc",
+      authDomain: "gibsloginsys.firebaseapp.com",
+      projectId: "gibsloginsys",
+      storageBucket: "gibsloginsys.firebasestorage.app",
+      messagingSenderId: "103609845193",
+      appId: "1:103609845193:web:b5f2d468a1968d015a5418"
+    };
+    firebase.initializeApp(firebaseConfig);
+    function logout() {
+      firebase.auth().signOut().then(() => window.location.href = "login.html");
+    }
+  </script>
+</body></html>
