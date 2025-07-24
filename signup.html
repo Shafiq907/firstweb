@@ -1,42 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><title>Signup</title></head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Signup - GBS System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
 <body>
-  <h2>Signup</h2>
-  <input type="email" id="email" placeholder="Email" />
-  <input type="password" id="password" placeholder="Password" />
-  <select id="role">
-    <option value="">Select Role</option>
-    <option value="superadmin">Super Admin</option>
-    <option value="admin">Admin</option>
-    <option value="user">User</option>
-  </select>
-  <button onclick="signup()">Signup</button>
-  <script src="https://www.gstatic.com/firebasejs/12.0.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/12.0.0/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/12.0.0/firebase-database-compat.js"></script>
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyBBAojU0U4T6Mxiju-IGRjePkZlynIu_Nc",
-      authDomain: "gibsloginsys.firebaseapp.com",
-      projectId: "gibsloginsys",
-      storageBucket: "gibsloginsys.firebasestorage.app",
-      messagingSenderId: "103609845193",
-      appId: "1:103609845193:web:b5f2d468a1968d015a5418",
-      databaseURL: "https://gibsloginsys-default-rtdb.asia-southeast1.firebasedatabase.app/"
-    };
-    firebase.initializeApp(firebaseConfig);
-    function signup() {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-      const role = document.getElementById("role").value;
-      if (!email || !password || !role) return alert("Fill all fields");
-      firebase.auth().createUserWithEmailAndPassword(email, password).then(user => {
-        firebase.database().ref("users/" + user.user.uid).set({ email, role });
-        alert("Signup successful");
-        window.location.href = "login.html";
-      }).catch(e => alert(e.message));
-    }
-  </script>
+  <div class="form-container">
+    <h2>Signup</h2>
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="password" id="password" placeholder="Password" required />
+
+    <select id="role" required>
+      <option value="">Select Role</option>
+      <option value="superadmin">Super Admin</option>
+      <option value="admin">Admin</option>
+      <option value="user">User</option>
+    </select>
+
+    <button onclick="signup()">Signup</button>
+
+    <p>Already have an account? <a href="login.html">Login</a></p>
+  </div>
+
+  <script type="module" src="auth.js"></script>
 </body>
 </html>
